@@ -1,0 +1,269 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+/* Global Styles & Variables */
+:root {
+  --primary-color: #3b5bdb;
+  --main-bg-color: #e2e2e2;
+  --input-bg-color: #ebebeb;
+  --task-item-bg-color: #f1f3f5;
+  --urgent-color: #e40404;
+  --important-color: #f3a703; /* Amarelo/Laranja */
+  --normal-color: #028302;
+  --text-color: #212529; /* Cor de texto padrão, bom contraste */
+  --white-color: #ffffff;
+  --border-radius: 8px; /* Para consistência */
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--main-bg-color);
+  color: var(--text-color);
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Garante que o corpo ocupe toda a altura */
+}
+
+/* Utility Class for consistent input/select styling */
+.input__box {
+  background-color: var(--input-bg-color);
+  border: 1px solid #ced4da; /* Borda sutil */
+  border-radius: var(--border-radius);
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: var(--text-color);
+  box-sizing: border-box; /* Inclui padding e border no tamanho total */
+}
+
+.input__box::placeholder {
+  color: #6c757d; /* Cor do placeholder */
+}
+
+/* Header Styles */
+.header__container {
+  background-color: var(--white-color);
+  padding: 20px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.header__content {
+  max-width: 910px; /* Largura máxima do conteúdo */
+  margin: 0 auto; /* Centraliza */
+  padding: 0 20px; /* Espaçamento lateral */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin: 0;
+}
+
+.header__input--search {
+  width: 500px; /* Largura do campo de busca */
+}
+
+/* Main Content Styles */
+.main__container {
+  max-width: 960px; /* Mantém a largura máxima consistente com o header */
+  width: 100%; /* Garante que o container tente ocupar a largura máxima */
+  margin: 30px auto; /* Espaçamento superior/inferior e centralização */
+  padding: 0 20px; /* Espaçamento lateral consistente com o header */
+  box-sizing: border-box; /* Inclui padding na largura total */
+  flex-grow: 1; /* Faz o main crescer para ocupar espaço */
+}
+
+/* Form Styles */
+.form__container {
+  background-color: var(--white-color);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  margin-bottom: 30px; /* Espaço abaixo do formulário */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.form__title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.form__input-container {
+  display: flex;
+  gap: 15px; /* Espaço entre os inputs */
+  margin-bottom: 20px;
+}
+
+.form__input--text {
+  flex-grow: 1; /* Ocupa o espaço restante */
+}
+
+.form__input--priority {
+  min-width: 180px; /* Largura mínima para o select */
+  appearance: none; /* Remove estilo padrão do select */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E"); /* Ícone de seta customizado */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px 12px;
+  padding-right: 40px; /* Espaço para a seta */
+}
+
+.form__button--add-task {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: var(--border-radius);
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  width: 100%; /* Botão ocupa toda a largura */
+  transition: background-color 0.2s ease; /* Transição suave */
+}
+
+.form__button--add-task:hover {
+  background-color: #2a4db5; /* Tom mais escuro no hover */
+}
+
+/* Task List Styles */
+.tasks__container {
+  background-color: var(--white-color);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.tasks__container h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.tasks__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espaço entre os itens da lista */
+}
+
+.task__item {
+  background-color: var(--task-item-bg-color);
+  border-radius: var(--border-radius);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #dee2e6; /* Borda sutil */
+}
+
+.task-info__container {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espaço entre o span e o texto */
+}
+
+.task-type {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%; /* Círculo */
+  flex-shrink: 0; /* Evita que o span encolha */
+}
+
+/* Task Type Colors */
+.span-urgent {
+  background-color: var(--urgent-color);
+}
+
+.span-important {
+  background-color: var(--important-color);
+}
+
+.span-normal {
+  background-color: var(--normal-color);
+}
+
+.task-info__container p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+/* Remove Task Button Styles */
+.task__button--remove-task {
+  background-color: transparent;
+  border: none;
+  padding: 5px; /* Pequeno padding para área de clique */
+  cursor: pointer;
+  width: 24px; /* Tamanho do botão */
+  height: 24px;
+  background-image: url('./assets/trash-icon.svg'); /* Ícone da lixeira */
+  background-repeat: no-repeat;
+  background-position: center center; /* Centraliza o ícone */
+  background-size: contain; /* Ajusta o tamanho do ícone */
+  opacity: 0.7; /* Leve transparência */
+  transition: opacity 0.2s ease;
+}
+
+.task__button--remove-task:hover {
+  opacity: 1; /* Opacidade total no hover */
+}
+
+/* Responsive Adjustments (Example for smaller screens) */
+@media (max-width: 768px) {
+  .header__content {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .header__input--search {
+    width: 100%;
+  }
+
+  .form__input-container {
+    flex-direction: column;
+  }
+
+  .form__input--priority {
+    min-width: unset; /* Remove largura mínima */
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .header__title {
+    font-size: 1.25rem;
+  }
+
+  .form__container,
+  .tasks__container {
+    padding: 20px;
+  }
+
+  .task__item {
+    padding: 10px 15px;
+  }
+
+  .task-info__container {
+    gap: 10px;
+  }
+
+  .task-type {
+    width: 10px;
+    height: 10px;
+  }
+
+  .task-info__container p {
+    font-size: 0.9rem;
+  }
+}
